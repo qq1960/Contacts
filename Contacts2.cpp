@@ -465,18 +465,13 @@ private:
 		std::cout << " 4. Modify an existing contact" << std::endl << std::endl;
 		std::cout << " 5. Delete an existing contact" << std::endl << std::endl;
 		std::cout << " 6. Save contacts to file" << std::endl << std::endl;
-////////////////////////////////
-// The following for future use.
-// std::cout << " ?. Export contacts to a human-readable file" << std::endl << std::endl;
-////////////////////////////////
-		std::cout << std::endl << std::endl;
-		std::cout << " 7. Exit program" << std::endl << std::endl;
-		std::cout << std::endl << std::endl;
+        std::cout << " 7. Export contacts to a human-readable file" << std::endl << std::endl;
+		std::cout << " 8. Exit program" << std::endl << std::endl;
 		std::cout << " Please make your selection : ";
 		std::cin >> iSelect;
 		std::cout << std::endl;
 
-		return iSelect;
+		return (iSelect);
 	}
 
 	void UserExit(void) {
