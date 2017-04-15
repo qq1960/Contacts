@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # c-simple-console
 
 C Sample Application
@@ -14,3 +15,7 @@ FROM [codenvy/cpp_gcc](https://hub.docker.com/r/codenvy/cpp_gcc/)
 | #       | Description           | Command  |
 | :------------- |:-------------| :-----|
 | 1      | Build and run | `cd ${current.project.path} && gcc -o Hello Hello.c && ./Hello` |
+=======
+# Contacts
+C++ Contacts
+>>>>>>> 0071a5e865c42753a136462ae9a5fb03846245ed
