@@ -468,7 +468,7 @@ private:
 		std::cout << " 6. Save contacts to file" << std::endl << std::endl;
         std::cout << " 7. Export contacts to a human-readable file" << std::endl << std::endl;
 		std::cout << " 8. Exit program" << std::endl << std::endl;
-		std::endl;
+		std::cout << std::endl;
 		std::cout << " Please make your selection : ";
 		std::cin >> iSelect;
 		std::cout << std::endl;
@@ -499,7 +499,7 @@ public:
 		std::cout << "The user chose : " << static_cast<int>(iUserChoice) << std::endl;
 
 		try {
-			if (iUserChoice > 7)
+			if (iUserChoice > 8)
 				throw UserException("Value too high");
 
 			if (iUserChoice < 1)
