@@ -496,7 +496,7 @@ public:
 		iUserChoice = GetUserChoice();
 
 // Debugging
-		std::cout << "The user chose : " << static_cast<int>(iUserChoice) << std::endl;
+		std::cout << "The user chose : " << iUserChoice << std::endl;
 
 		try {
 			if (iUserChoice > 8)
