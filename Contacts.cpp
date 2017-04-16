@@ -459,15 +459,15 @@ private:
 
 		std::cout << " Contact Management" << std::endl;
 		std::cout << " ==================" << std::endl;
-		std::cout << std::endl << std::endl;
-		std::cout << " 1. Read contacts file" << std::endl << std::endl;
-		std::cout << " 2. Display an existing contact" << std::endl << std::endl;
-		std::cout << " 3. Add a new contact" << std::endl << std::endl;
-		std::cout << " 4. Modify an existing contact" << std::endl << std::endl;
-		std::cout << " 5. Delete an existing contact" << std::endl << std::endl;
-		std::cout << " 6. Save contacts to file" << std::endl << std::endl;
-        std::cout << " 7. Export contacts to a human-readable file" << std::endl << std::endl;
-		std::cout << " 8. Exit program" << std::endl << std::endl;
+		std::cout << std::endl;
+		std::cout << " 1. Read contacts file" << std::endl;
+		std::cout << " 2. Display an existing contact" << std::endl;
+		std::cout << " 3. Add a new contact" << std::endl;
+		std::cout << " 4. Modify an existing contact" << std::endl;
+		std::cout << " 5. Delete an existing contact" << std::endl;
+		std::cout << " 6. Save contacts to file" << std::endl;
+        std::cout << " 7. Export contacts to a human-readable file" << std::endl;
+		std::cout << " 8. Exit program" << std::endl;
 		std::cout << std::endl;
 		std::cout << " Please make your selection : ";
 		std::cin >> iSelect;
