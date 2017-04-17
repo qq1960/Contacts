@@ -46,7 +46,16 @@ int main(){
     
     file.open("phone.dat", ios::ate | ios::in | ios::out | ios::binary);
     
-    std::cout << "File opened" << std::endl;
+    if (file)
+    {
+        std::cout << "File opened" << std::endl;
+    } else {
+        std::ofstream outfile ("phone.dat");
+        std::cout << "Created new file!" << std::endl;
+        outfile.close();
+        
+        file.open("phone.dat", ios::ate | ios::in | ios::out | ios::binary);
+    }
     
     char ch;
     char nm[20];
