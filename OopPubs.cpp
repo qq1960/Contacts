@@ -1,14 +1,26 @@
 // Object Oriented Publications
+#define MAXLEN 50
+#include <iostream>
+#include <cstring>
+#include <cstdio>
 
-#include<iostream.h>
-#include<stdio.h>
+#define TRUNCATE_NULL(strText) \
+ { \
+   int _strlen = strlen(strText); \
+   if (_strlen > 0 && strText[_strlen - 1] == '\n') strText[_strlen - 1] = '\0'; \
+   else while(fgetc(stdin)!='\n'); \
+ }
+#define gets(strText) fgets(strText, sizeof(strText), stdin); TRUNCATE_NULL(strText);
+
+using namespace std;
 
 class publication                                           //  abstract class
 {
      protected:
           
-     // static const     char name[29]="H & M publication";  char title[50];
-         float price;
+     // static const     char name[29]="H & M publication";
+        char title[MAXLEN];
+        float price;
     
      public:
           
@@ -17,21 +29,21 @@ class publication                                           //  abstract class
              price=0;
          }
       
-         virtual ~ publication()                            //  VIRTUAL DESTRUCTOR
+         virtual ~publication()                            //  VIRTUAL DESTRUCTOR
             { }
       
-         virtualvoid getdata()                               //   VIRTUAL FUNCTION
+         virtual void getdata()                               //   VIRTUAL FUNCTION
          {
-             cout<<"enter title"<<endl;
-            gets(title);                                      //   ENTER NAME  
-             cout<<"enter price"<<endl;
-             cin>>price;
+            cout << "enter title" << endl;
+            gets(title);                                      //   ENTER NAME
+            cout << "enter price" << endl;
+            cin >> price;
          }
      
-         virtualvoid putdata() 
+         virtual void putdata() 
          {
             // cout<<name<<endl; 
-             cout<<"title : "<<title<<endl<<" price : "<<price<<endl;
+             cout << "title : " << title << endl << " price : " << price << endl;
          }
 };
 
@@ -79,7 +91,7 @@ class casete:public publication
         }
     
         ~casete()
-        {    }
+        { }
     
         void getdata()                                               //   FUNCTION OVERRIDING
         {
@@ -96,6 +108,7 @@ class casete:public publication
     
         friend  int secs(casete cs);                                   //   FRIEND FUNCTION
 };
+
 class disk:public publication
 {
       protected:
@@ -153,7 +166,6 @@ class language:public book                                        //MULTILEVEL I
 int secs(casete cs)                                                    //   FRIEND FUNCTION DEFINITION
 {
     return (cs.mins * 60);
-     
 }
 
 int main()
@@ -203,8 +215,11 @@ xyz:                                                                     // GOTO
         {
             goto xyz;
         }
-        elsereturn 0;
-       
+        else
+        {
+           return 0;
+        }
+
        delete bookk;
        delete cassete;
        delete diskk;    

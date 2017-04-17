@@ -1,10 +1,14 @@
 //Telephone Directory
+// *** Needs debugging *** //
 
-#include <iostream.h>
-#include <fstream.h>
-#include <string.h>
-#include <iomanip.h>
-#include <conio.h>
+#include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
+#include <iomanip>
+
+using namespace std;
 
 class phoneBook{
     char name[20],phno[15];
@@ -33,23 +37,39 @@ void phoneBook :: showdata(){
 }
 
 
-void main(){
+int main(){
+    
     phoneBook rec;
     fstream file;
-    file.open("d:\\phone.dat", ios::ate | ios::in | ios::out | ios::binary);
-    char ch,nm[20],telno[6];
-    int choice,found=0;
-    while(1){
-        clrscr();
-        cout<<"\n*****Phone Book*****\n";
-        cout<<"1) Add New Record\n";
-        cout<<"2) Display All Records\n";
-        cout<<"3) Search Telephone No.\n";
-        cout<<"4) Search Person Name\n";
-        cout<<"5) Update Telephone No.\n";
-        cout<<"6) Exit\n";
-        cout<<"Choose your choice : ";
-        cin>>choice;
+    
+    std::cout << "Opening data file" << std::endl;
+    
+    file.open("phone.dat", ios::ate | ios::in | ios::out | ios::binary);
+    
+    std::cout << "File opened" << std::endl;
+    
+    char ch;
+    char nm[20];
+    char telno[6];
+    int choice;
+    int found = 0;
+    int cnt;
+    bool keepOn = true;
+    
+    while(keepOn){
+
+        //std::cout << "\033[2J" << std::flush; // This is VT100 clear screen and will also work
+        
+        cout << "\n*****Phone Book*****\n";
+        cout << "1) Add New Record\n";
+        cout << "2) Display All Records\n";
+        cout << "3) Search Telephone No.\n";
+        cout << "4) Search Person Name\n";
+        cout << "5) Update Telephone No.\n";
+        cout << "6) Exit\n";
+        cout << "Choose your option : ";
+        
+        cin >> choice;
         switch(choice){
             case 1 : //New Record
                  rec.getdata();
@@ -66,7 +86,8 @@ void main(){
                         rec.showdata();
                  }
                  file.clear();
-                 getch();
+                 //getch();
+                 cin.get(ch);
                  break;
 
             case 3 : //Search Tel. no. when person name is known.
@@ -85,14 +106,15 @@ void main(){
                  file.clear();
                  if(found==0)
                     cout<<"\n\n---Record Not found---\n";
-                 getch();
+                 //getch();
+                 cin.get(ch);
                  break;
 
             case 4 : //Search name on basis of tel. no
-                 cout<<"\n\nEnter Telephone No : ";
-                 cin>>telno;
+                 cout << "\n\nEnter Telephone No : ";
+                 cin >> telno;
                  file.seekg(0,ios::beg);
-                 found=0;
+                 found = 0;
                  while(file.read((char *) &rec, sizeof(rec)))
                  {
                     if(strcmp(telno,rec.getphno())==0)
@@ -104,7 +126,8 @@ void main(){
                  file.clear();
                  if(found==0)
                     cout<<"\n\n---Record Not found---\n";
-                 getch();
+                 //getch();
+                 cin.get(ch);
                  break;
 
             case 5 : //Update Telephone No.
@@ -112,7 +135,7 @@ void main(){
                  cin>>nm;
                  file.seekg(0,ios::beg);
                  found=0;
-                 int cnt=0;
+                 cnt = 0;
                  while(file.read((char *) &rec, sizeof(rec)))
                  {
                     cnt++;
@@ -140,9 +163,20 @@ void main(){
                     file.flush();
                  }
                  break;
-            case 6 : goto out;
+            
+            case 6 : // Exit
+                std::cout << "Exit - Have a nice day!" << std::endl;
+                keepOn = false;
+                break;
+            
+            default :
+                 std::cout << "Invalid option - Abort" << std::endl;
+                 keepOn = false;
+                 break;
+            //case 6 : return(0);
         }
     }
-out:
-file.close();
-}[/Code]
+    std::cout << "Closing file" << std::endl;
+    file.close();
+    return(EXIT_SUCCESS);
+}

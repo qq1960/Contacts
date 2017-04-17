@@ -57,6 +57,7 @@ int main()
 void addnode()          //adding node
 {
     char r;
+    int num;
     temp1=new node;
     cout<<"enter int to store"<<endl;
     cin>>temp1->data;
@@ -65,6 +66,7 @@ void addnode()          //adding node
     switch (r)
     {
     case's':                 //add startif(start==NULL)
+        if (start==NULL)
         {
             start=temp1;
             temp1->next=NULL;
@@ -80,6 +82,7 @@ void addnode()          //adding node
         }
         break;
     case'e':               //add endif(start==NULL)
+        if (start==NULL)
         {
             start=temp1;
             temp1->next=NULL;
@@ -151,13 +154,14 @@ void search()            //searching
 }
 void delnode()           //deleting
 {  
-    
+    int num;
     char d;
     cout<<"press 's' to delete from start,'m' for midd , 'e' for end"<<endl;
     cin>>d;
     switch (d)
     {
       case's':               //delete startif(start==NULL)
+          if (start==NULL)
           {
               cout<<"no node to delete"<<endl;
           }
@@ -170,6 +174,7 @@ void delnode()           //deleting
           }
          break;
       case'e':            //delete endif(start==NULL)
+          if (start==NULL)
           {
               cout<<"no node to delete"<<endl; 
           }
